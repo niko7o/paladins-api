@@ -1,8 +1,15 @@
 {
+<<<<<<< HEAD
   "name": "paladins-api",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+=======
+  "name": "axios-api-request",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+>>>>>>> f20048a... v1.0 paladins api works + dotenv config hooked
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js"
