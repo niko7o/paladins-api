@@ -29,7 +29,7 @@ pal.connect('PC', (err, res) => {
 /* Routes */
 
 app.get('/', (request, response) => {
-    response.send('API Up & Running!')
+    response.render('main')
 })
 
 app.get('/paladins/player/:player', (request, response) => {
