@@ -12,6 +12,7 @@
   "dependencies": {
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
     "paladins-api": "^1.5.1"
   }
 }
