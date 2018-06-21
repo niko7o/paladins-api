@@ -2,13 +2,12 @@ const express = require('express')
 const app = express()
 const port = 3000
 const paladins = require('paladins-api');
-const exphbs = require('express-handlebars');
 require('dotenv').config({path: './config/process.env'})
 
 /* Handlebars Engine Config */
 
-app.engine('handlebars', exphbs({ defaultLayout: 'main' })); 
-app.set('view engine', 'handlebars');
+app.set('views', __dirname + '/views');
+app.set('view engine', 'hbs');
 
 /* dotenv API credentials */
 
@@ -35,9 +34,9 @@ app.get('/', (request, response) => {
 app.get('/paladins/player/:player', (request, response) => {
     let player = request.params.player;
     if (sessionId) {
-        pal.getChampionRanks(sessionId, 'PC', player, (err, res) => {
+        let data = pal.getChampionRanks(sessionId, 'PC', player, (err, res) => {
             console.log(res);
-            response.send(res);
+            response.render('stats', data)
         });
     }
 });
@@ -86,5 +85,6 @@ app.get('/paladins/match/:match', (request, response) => {
 
 app.listen(port, (err) => {
     if (err) { return console.log('Error launching server: ', err) }
-    console.log(`Listening on ${port}`)
+    //console.log(`Listening on ${port}`)
+    console.info('==> 🌎  Go to http://localhost:%s', port);
 })
