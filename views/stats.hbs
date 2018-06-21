@@ -1,0 +1,12 @@
+<h1>Stats</h1>
+{{#each data}}
+
+    <div>
+        <p>Kills: {{ Kills }} ({{Killing_Spree}}) ---- Deaths: {{ Deaths }}</p>
+        <p>Healing: {{ Healing }} </p>
+        <p>Total damage: <span style="color: red">{{ Damage }}</span></p>
+        <p>Queue: {{ Queue }}</p>
+        <p>Date: {{ Match_Time }}</p>
+        <p>Map: {{ Map_Game }}</p>
+    </div>
+{{/each}}

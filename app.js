@@ -34,7 +34,9 @@ app.get('/', (request, response) => {
 app.get('/paladins/player/:player', (request, response) => {
     let player = request.params.player;
     pal.getChampionRanks(sessionId, 'PC', player, (err, res) => {
-        response.json(res)
+        response.render('stats', {
+            data: res
+        })
     });
 });
 
@@ -42,7 +44,9 @@ app.get('/paladins/profile/:player', (request, response) => {
     let player = request.params.player;
     if(sessionId) {
         pal.getPlayer(sessionId, 'PC', player, (err, res) => {
-            response.json(res);
+            response.render('stats', { 
+                data: res
+            })
         });
     }
 });
@@ -51,7 +55,8 @@ app.get('/paladins/matches/:player', (request, response) => {
     let player = request.params.player;
     if (sessionId) {
         pal.getMatchHistory(sessionId, 'PC', player, (err, matchData) => {
-            response.json(matchData)
+            console.log(matchData)
+            response.render('stats', { data: matchData })
         });
     }
 });
