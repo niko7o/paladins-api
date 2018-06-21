@@ -33,12 +33,12 @@ app.get('/', (request, response) => {
 
 app.get('/paladins/player/:player', (request, response) => {
     let player = request.params.player;
-    if (sessionId) {
-        let data = pal.getChampionRanks(sessionId, 'PC', player, (err, res) => {
-            console.log(res);
-            response.render('stats', data)
-        });
-    }
+    let data = '';
+    pal.getChampionRanks(sessionId, 'PC', player, (err, res) => {
+        data = JSON.stringify(res);
+        response.render('stats', { data })
+        console.info(data)
+    });
 });
 
 app.get('/paladins/profile/:player', (request, response) => {
@@ -85,6 +85,5 @@ app.get('/paladins/match/:match', (request, response) => {
 
 app.listen(port, (err) => {
     if (err) { return console.log('Error launching server: ', err) }
-    //console.log(`Listening on ${port}`)
     console.info('==> 🌎  Go to http://localhost:%s', port);
 })
